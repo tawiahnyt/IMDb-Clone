@@ -8,11 +8,11 @@ dotenv.config();
 const API_KEY = process.env.API_KEY;
 
 export default async function MoviePage({ params }) {
-  const movieId = await params.id;
+  const movieId = await params;
 //   console.log(movieId);
 
   const res = await fetch(
-    `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}`
+    `https://api.themoviedb.org/3/movie/${movieId.id}?api_key=${API_KEY}`
   );
   const movie = await res.json();
 //   console.log(movie);
