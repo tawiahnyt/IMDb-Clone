@@ -16,7 +16,7 @@ export default function NavbarItem({ title, param }) {
         ${
           genre &&
           genre === param &&
-          "underline underline-offset-8 decration-4 decoration-amber-500 rounder-lg"
+          "underline underline-offset-8 decoration-4 decoration-amber-500 rounder-md"
         }`}
         href={`/?genre=${param}`}
       >
