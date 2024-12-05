@@ -5,13 +5,15 @@ import Header from "@/components/Header";
 import Providers from "./Providers";
 import Navbar from "@/components/Navbar";
 import SearchBox from "@/components/SearchBox";
+import PropTypes from "prop-types";
+
 
 export const metadata = {
   title: "IMDB Clone",
   description: "This is the IMDB Clone website",
 };
 
-export default function RootLayout({ children }) {
+function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
@@ -31,3 +33,9 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
+RootLayout.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+export default RootLayout;
