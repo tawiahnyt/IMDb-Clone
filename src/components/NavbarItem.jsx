@@ -4,12 +4,14 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import React from "react";
+import React, { Suspense } from "react";
 import PropTypes from "prop-types";
 
-export default function NavbarItem({ title, param }) {
+// NavbarItem component
+function NavbarItem({ title, param }) {
   const searchParams = useSearchParams();
   const genre = searchParams.get("genre");
+
   return (
     <div>
       <Link
@@ -17,7 +19,7 @@ export default function NavbarItem({ title, param }) {
         ${
           genre &&
           genre === param &&
-          "underline underline-offset-8 decoration-4 decoration-amber-500 rounder-md"
+          "underline underline-offset-8 decoration-4 decoration-amber-500 rounded-md"
         }`}
         href={`/?genre=${param}`}
       >
@@ -31,3 +33,12 @@ NavbarItem.propTypes = {
   title: PropTypes.string.isRequired,
   param: PropTypes.string.isRequired,
 };
+
+// Wrapper component that adds Suspense
+export default function NavbarItemWrapper(props) {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <NavbarItem {...props} />
+    </Suspense>
+  );
+}
