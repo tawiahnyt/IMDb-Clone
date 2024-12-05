@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FiThumbsUp } from "react-icons/fi";
+import PropTypes from "prop-types";
 
 export default function Card({ result }) {
   return (
@@ -15,7 +16,7 @@ export default function Card({ result }) {
           }`}
           width={500}
           height={300}
-          alt={result.title}
+          alt={result.title || result.name}
           className="sm:rounded-t-lg group-hover:opacity-80 transition-opacity duration-200"
           style={{ maxWidth: "100%", height: "auto" }}
           placeholder="blur"
@@ -35,3 +36,17 @@ export default function Card({ result }) {
     </div>
   );
 }
+
+Card.propTypes = {
+  result: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    backdrop_path: PropTypes.string,
+    poster_path: PropTypes.string,
+    title: PropTypes.string,
+    overview: PropTypes.string,
+    release_date: PropTypes.string,
+    first_air_date: PropTypes.string,
+    vote_count: PropTypes.number,
+    name: PropTypes.string,
+  }).isRequired,
+};

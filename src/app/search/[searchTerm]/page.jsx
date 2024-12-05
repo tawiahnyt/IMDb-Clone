@@ -4,12 +4,13 @@ import React from "react";
 import dotenv from "dotenv";
 import ErrorMessage from "@/app/error";
 import Results from "@/components/Results";
+import PropTypes from 'prop-types';
 
 dotenv.config();
 const API_KEY = process.env.API_KEY;
 
+
 export default async function SearchPage({ params }) {
-  // console.log(params);
 
   const res = await fetch(
     `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${params.searchTerm}&language=en-US&adult=false`
@@ -31,3 +32,9 @@ export default async function SearchPage({ params }) {
     </div>
   );
 }
+
+SearchPage.propTypes = {
+  params: PropTypes.shape({
+    searchTerm: PropTypes.string.isRequired,
+  }).isRequired,
+};

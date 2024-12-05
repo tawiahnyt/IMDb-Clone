@@ -5,6 +5,7 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import React from "react";
+import PropTypes from "prop-types";
 
 export default function NavbarItem({ title, param }) {
   const searchParams = useSearchParams();
@@ -25,3 +26,8 @@ export default function NavbarItem({ title, param }) {
     </div>
   );
 }
+
+NavbarItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  param: PropTypes.string.isRequired,
+};

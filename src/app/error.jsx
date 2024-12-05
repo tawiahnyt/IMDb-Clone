@@ -3,6 +3,7 @@
 "use client";
 
 import React, { useEffect } from "react";
+import PropTypes from "prop-types";
 
 export default function ErrorMessage({ error, reset }) {
   useEffect(() => {
@@ -17,4 +18,9 @@ export default function ErrorMessage({ error, reset }) {
     </div>
   );
 }
+
+ErrorMessage.propTypes = {
+  error: PropTypes.object.isRequired,
+  reset: PropTypes.func.isRequired,
+};
 

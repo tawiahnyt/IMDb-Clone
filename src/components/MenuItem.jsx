@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import React from "react";
+import PropTypes from "prop-types";
 
 export default function MenuItem({ title, address, Icon }) {
   return (
@@ -13,3 +14,9 @@ export default function MenuItem({ title, address, Icon }) {
     </div>
   );
 }
+
+MenuItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  address: PropTypes.string.isRequired,
+  Icon: PropTypes.elementType.isRequired,
+};

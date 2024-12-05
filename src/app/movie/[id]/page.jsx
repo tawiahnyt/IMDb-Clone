@@ -3,19 +3,19 @@
 import React from "react";
 import dotenv from "dotenv";
 import Image from "next/image";
+import PropTypes from "prop-types";
+
 
 dotenv.config();
 const API_KEY = process.env.API_KEY;
 
 export default async function MoviePage({ params }) {
   const movieId = await params;
-//   console.log(movieId);
 
   const res = await fetch(
     `https://api.themoviedb.org/3/movie/${movieId.id}?api_key=${API_KEY}`
   );
   const movie = await res.json();
-//   console.log(movie);
 
   return (
     <div className="w-full">
@@ -54,3 +54,8 @@ export default async function MoviePage({ params }) {
   );
 }
 
+MoviePage.propTypes = {
+  params: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+  }).isRequired,
+};

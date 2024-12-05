@@ -2,6 +2,7 @@
 
 import React from "react";
 import Card from "./Card";
+import PropTypes from "prop-types";
 
 export default function Results({ results }) {
   return (
@@ -11,5 +12,8 @@ export default function Results({ results }) {
       ))}
     </div>
   );
-};
+}
 
+Results.propTypes = {
+  results: PropTypes.array.isRequired,
+};
